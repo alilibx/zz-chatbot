@@ -8,6 +8,7 @@ import { Key } from '../Settings/Key';
 import { SidebarButton } from '../Sidebar/SidebarButton';
 import { ClearConversations } from './ClearConversations';
 import { PluginKeys } from './PluginKeys';
+import { LanguageSelector } from './ChangeLanguage';
 
 interface Props {
   lightMode: 'light' | 'dark';
@@ -16,6 +17,7 @@ interface Props {
   pluginKeys: PluginKey[];
   serverSidePluginKeysSet: boolean;
   conversationsCount: number;
+  languageCode: "en" | "fr" | "es";
   onToggleLightMode: (mode: 'light' | 'dark') => void;
   onApiKeyChange: (apiKey: string) => void;
   onClearConversations: () => void;
@@ -23,6 +25,7 @@ interface Props {
   onImportConversations: (data: SupportedExportFormats) => void;
   onPluginKeyChange: (pluginKey: PluginKey) => void;
   onClearPluginKey: (pluginKey: PluginKey) => void;
+  onLanguageChange: (languageCode: string) => void;
 }
 
 export const ChatbarSettings: FC<Props> = ({
@@ -39,6 +42,7 @@ export const ChatbarSettings: FC<Props> = ({
   onImportConversations,
   onPluginKeyChange,
   onClearPluginKey,
+  onLanguageChange,
 }) => {
   const { t } = useTranslation('sidebar');
 
@@ -77,6 +81,9 @@ export const ChatbarSettings: FC<Props> = ({
           onClearPluginKey={onClearPluginKey}
         />
       ) : null}
+
+      
+      <LanguageSelector onLanguageChange={language => console.log(language)} />
     </div>
   );
 };
