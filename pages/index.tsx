@@ -49,7 +49,7 @@ const Home: React.FC<HomeProps> = ({
   serverSidePluginKeysSet,
   defaultModelId,
 }) => {
-  const { t } = useTranslation('chat');
+  const { t, i18n } = useTranslation('chat');
 
   // STATE ----------------------------------------------
 
@@ -366,6 +366,13 @@ const Home: React.FC<HomeProps> = ({
         JSON.stringify([...pluginKeys, pluginKey]),
       );
     }
+  };
+
+  // Handle language change
+  const handleLanguageChange = (language: string) => {
+    // Set language in state
+    i18n.changeLanguage(language);
+    localStorage.setItem('language', language);
   };
 
   const handleClearPluginKey = (pluginKey: PluginKey) => {
@@ -735,7 +742,7 @@ const Home: React.FC<HomeProps> = ({
   return (
     <>
       <Head>
-        <title>Chatbot UI</title>
+        <title>ZZ Open Chatbot</title>
         <meta name="description" content="ChatGPT but better." />
         <meta
           name="viewport"
@@ -781,6 +788,7 @@ const Home: React.FC<HomeProps> = ({
                   onImportConversations={handleImportConversations}
                   onPluginKeyChange={handlePluginKeyChange}
                   onClearPluginKey={handleClearPluginKey}
+                  onLanguageChange={handleLanguageChange}
                 />
 
                 <button

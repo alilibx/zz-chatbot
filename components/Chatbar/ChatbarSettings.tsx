@@ -25,7 +25,6 @@ interface Props {
   onImportConversations: (data: SupportedExportFormats) => void;
   onPluginKeyChange: (pluginKey: PluginKey) => void;
   onClearPluginKey: (pluginKey: PluginKey) => void;
-  onLanguageChange: (languageCode: string) => void;
 }
 
 export const ChatbarSettings: FC<Props> = ({
@@ -42,7 +41,6 @@ export const ChatbarSettings: FC<Props> = ({
   onImportConversations,
   onPluginKeyChange,
   onClearPluginKey,
-  onLanguageChange,
 }) => {
   const { t } = useTranslation('sidebar');
 

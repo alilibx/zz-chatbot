@@ -3,19 +3,20 @@ import { useTranslation } from 'react-i18next';
 import { SidebarButton } from '../Sidebar/SidebarButton';
 import { IconLanguage } from '@tabler/icons-react';
 
+
 interface Props {
   onLanguageChange: (languageCode: string) => void;
 }
 
 export const LanguageSelector: FC<Props> = ({ onLanguageChange }) => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('sidebar');
 
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLanguageClick = (languageCode?: string) => {
     onLanguageChange(languageCode!);
     // Redirect to home with / language code 
-    window.location.href = `/${languageCode}`;
+    window.location.href = `/${languageCode}`;    
     setIsOpen(false);
   };
 
@@ -72,7 +73,7 @@ export const LanguageSelector: FC<Props> = ({ onLanguageChange }) => {
               className="dark:border-netural-400 inline-block max-h-[400px] transform overflow-hidden rounded-lg border border-gray-300 bg-white px-4 pt-5 pb-4 text-left align-bottom shadow-xl transition-all dark:bg-[#202123] sm:my-8 sm:max-h-[600px] sm:w-full sm:max-w-lg sm:p-6 sm:align-middle"
               role="dialog"
             >
-              <div className="mb-10 text-4xl">Available Languages</div>
+              <div className="mb-10 text-4xl">{t('Available Languages')}</div>
 
                 <div className="mt-6 text-sm font-bold text-black dark:text-neutral-200">
                   {t('Select Language')}
@@ -89,7 +90,13 @@ export const LanguageSelector: FC<Props> = ({ onLanguageChange }) => {
                 onClick={() => handleLanguageClick('fr')}
               >
                 Français
-              </button>              
+              </button> 
+              <button
+                className="block w-full text-left py-2 px-4 hover:bg-gray-100"
+                onClick={() => handleLanguageClick('ar')}
+              >
+                عربي
+              </button>               
             </div>
           </div>
         </div>

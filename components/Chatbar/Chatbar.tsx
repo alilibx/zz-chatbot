@@ -38,6 +38,7 @@ interface Props {
   onImportConversations: (data: SupportedExportFormats) => void;
   onPluginKeyChange: (pluginKey: PluginKey) => void;
   onClearPluginKey: (pluginKey: PluginKey) => void;
+  onLanguageChange: (languageCode: string) => void;
 }
 
 export const Chatbar: FC<Props> = ({
@@ -64,8 +65,9 @@ export const Chatbar: FC<Props> = ({
   onImportConversations,
   onPluginKeyChange,
   onClearPluginKey,
+  onLanguageChange
 }) => {
-  const { t } = useTranslation('sidebar');
+  const { t, i18n } = useTranslation('sidebar');
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [filteredConversations, setFilteredConversations] =
     useState<Conversation[]>(conversations);
@@ -212,8 +214,9 @@ export const Chatbar: FC<Props> = ({
         onExportConversations={onExportConversations}
         onImportConversations={onImportConversations}
         onPluginKeyChange={onPluginKeyChange}
-        onClearPluginKey={onClearPluginKey}
-      />
+        onClearPluginKey={onClearPluginKey} 
+        languageCode={'en'}     
+         />
     </div>
   );
 };

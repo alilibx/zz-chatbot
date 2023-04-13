@@ -3,11 +3,15 @@
   "New chat": "محادثة جديدة",
   "No conversations.": "لا يوجد محادثات",
   "Search conversations...": "...البحث عن المحادثات",
-  "OpenAI API Key": " (أوبن أيه أي) OpenAI API Key (مفتاح واجهة برمجة تطبيقات)",
+  "OpenAI API Key": "اعدادات اوبن ايه اي ",
   "Import data": "استيراد المحادثات",
   "Are you sure?": "هل أنت متأكد؟",
   "Clear conversations": "مسح المحادثات",
   "Export data": "تصدير المحادثات",
   "Dark mode": "الوضع الداكن",
-  "Light mode": "الوضع الفاتح"
+  "Light mode": "الوضع الساطع",
+  "Plugin Keys" : "اعدادات الاضافات",
+  "Change Language" : "تغيير اللغة",
+  "Available Languages" : "اللغات المتاحة",
+  "Select Language" : "اختر اللغة"
 }

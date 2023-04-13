@@ -230,7 +230,7 @@ export const ChatInput: FC<Props> = ({
         textareaRef?.current?.scrollHeight > 400 ? 'auto' : 'hidden'
       }`;
     }
-  }, [content]);
+  }, [content, textareaRef]);
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
@@ -354,16 +354,16 @@ export const ChatInput: FC<Props> = ({
       </div>
       <div className="px-3 pt-2 pb-3 text-center text-[12px] text-black/50 dark:text-white/50 md:px-4 md:pt-3 md:pb-6">
         <a
-          href="https://github.com/mckaywrigley/chatbot-ui"
+          href="https://github.com/alilibx/zzopenchat"
           target="_blank"
           rel="noreferrer"
           className="underline"
         >
-          ChatBot UI
+          ZZ Open Chatbot
         </a>
         .{' '}
         {t(
-          "Chatbot UI is an advanced chatbot kit for OpenAI's chat models aiming to mimic ChatGPT's interface and functionality.",
+          "ZZ Open Chatbot is an advanced chatbot interface aiming to provide a better experience and functionality for developers and users.",
         )}
       </div>
     </div>
