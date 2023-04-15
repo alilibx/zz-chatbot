@@ -25,13 +25,8 @@
 
   "Type a message or type '/' to select a prompt...":"أدخل رسالة أو أدخل '/' لإختيار الامر النصي...",
   "Message limit is {{maxLength}} characters. You have entered {{valueLength}} characters.": "حرفًا {{maxLength}}  حد الرسالة هو {{valueLength}} لقد أدخلت ",
-
- 
-
-  
-  
-  
   "Please enter a message": "يرجى إدخال رسالة",
   "ZZ Open Chatbot is an advanced chatbot interface aiming to provide a better experience and functionality for developers and users.": "زد زد اوبن شات تطبيق متطور يقدم تجربة فريدة لاستخدام الذكاء الاصطناعي من قبل المستخدم",
-  "Are you sure you want to clear all messages?": "هل أنت متأكد أنك تريد مسح كافة الرسائل؟"
+  "Are you sure you want to clear all messages?": "هل أنت متأكد أنك تريد مسح كافة الرسائل؟",
+  "ZZ Open Chatbot": "زد زد اوبن شاتبوت"
 }

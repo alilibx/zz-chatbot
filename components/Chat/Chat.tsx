@@ -211,7 +211,7 @@ export const Chat: FC<Props> = memo(
                           <Spinner size="16px" className="mx-auto" />
                         </div>
                       ) : (
-                        'ZZ Open Chatbot'
+                        t('ZZ Open Chatbot')
                       )}
                     </div>
 
