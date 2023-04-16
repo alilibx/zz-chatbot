@@ -23,6 +23,7 @@ import { ChatMessage } from './ChatMessage';
 import { ErrorMessageDiv } from './ErrorMessageDiv';
 import { ModelSelect } from './ModelSelect';
 import { SystemPrompt } from './SystemPrompt';
+import { useSession } from 'next-auth/react';
 
 interface Props {
   conversation: Conversation;
@@ -64,6 +65,8 @@ export const Chat: FC<Props> = memo(
     stopConversationRef,
   }) => {
     const { t } = useTranslation('chat');
+
+    const { data: session, status } = useSession({ required: true });
     const [currentMessage, setCurrentMessage] = useState<Message>();
     const [autoScrollEnabled, setAutoScrollEnabled] = useState<boolean>(true);
     const [showSettings, setShowSettings] = useState<boolean>(false);
@@ -159,6 +162,7 @@ export const Chat: FC<Props> = memo(
             <div className="text-center text-4xl font-bold text-black dark:text-white">
               {t("Welcome to ZZ Open Chatbot")}
             </div>
+            
             <div className="text-center text-lg text-black dark:text-white">
               <div className="mb-8">{`ZZ Open Chatbot is an open source clone of OpenAI's ChatGPT UI.`}</div>
               <div className="mb-2 font-bold">
@@ -205,15 +209,26 @@ export const Chat: FC<Props> = memo(
               {conversation.messages.length === 0 ? (
                 <>
                   <div className="mx-auto flex w-[350px] flex-col space-y-10 pt-12 sm:w-[600px]">
-                    <div className="text-center text-3xl font-semibold text-gray-800 dark:text-gray-100">
+                  <div className="text-center text-3xl font-semibold text-gray-800 dark:text-gray-100">
                       {models.length === 0 ? (
                         <div>
                           <Spinner size="16px" className="mx-auto" />
                         </div>
                       ) : (
+                        
                         t('ZZ Open Chatbot')
                       )}
                     </div>
+                    <div className="text-center text-2xl font-semibold text-gray-800 dark:text-gray-100">
+                      {models.length === 0 ? (
+                        <div>
+                          <Spinner size="16px" className="mx-auto" />
+                        </div>
+                      ) : (
+                        'Welcome, ' + session?.user?.name
+                      )}
+                    </div>
+                    
 
                     {models.length > 0 && (
                       <div className="flex h-full flex-col space-y-4 rounded-lg border border-neutral-200 p-4 dark:border-neutral-600">

@@ -1,6 +1,6 @@
 import { SupportedExportFormats } from '@/types/export';
 import { PluginKey } from '@/types/plugin';
-import { IconFileExport, IconMoon, IconSun } from '@tabler/icons-react';
+import { IconFileExport, IconLogout, IconMoon, IconSun, IconUser } from '@tabler/icons-react';
 import { useTranslation } from 'next-i18next';
 import { FC } from 'react';
 import { Import } from '../Settings/Import';
@@ -9,6 +9,7 @@ import { SidebarButton } from '../Sidebar/SidebarButton';
 import { ClearConversations } from './ClearConversations';
 import { PluginKeys } from './PluginKeys';
 import { LanguageSelector } from './ChangeLanguage';
+import {signOut, useSession } from 'next-auth/react';
 
 interface Props {
   lightMode: 'light' | 'dark';
@@ -43,9 +44,16 @@ export const ChatbarSettings: FC<Props> = ({
   onClearPluginKey,
 }) => {
   const { t } = useTranslation('sidebar');
-
+  const { data: session, status } = useSession({ required: true });
   return (
     <div className="flex flex-col items-center space-y-1 border-t border-white/20 pt-1 text-sm">
+     <SidebarButton
+      text={session?.user?.name?? 'No User'}
+      icon={<IconUser size={18} />}
+      onClick={() => {
+        
+      }}
+    />
       {conversationsCount > 0 ? (
         <ClearConversations onClearConversations={onClearConversations} />
       ) : null}
@@ -82,6 +90,11 @@ export const ChatbarSettings: FC<Props> = ({
 
       
       <LanguageSelector onLanguageChange={language => console.log(language)} />
+      <SidebarButton
+      text={t('Logout')}
+      icon={<IconLogout size={18} />}
+      onClick={() => signOut()}
+    />
     </div>
   );
 };

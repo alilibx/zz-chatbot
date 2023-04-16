@@ -31,6 +31,7 @@ import { exportData, importData } from '@/utils/app/importExport';
 import { savePrompts } from '@/utils/app/prompts';
 import { IconArrowBarLeft, IconArrowBarRight } from '@tabler/icons-react';
 import { GetServerSideProps } from 'next';
+import { useSession } from 'next-auth/react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
@@ -50,9 +51,9 @@ const Home: React.FC<HomeProps> = ({
   defaultModelId,
 }) => {
   const { t, i18n } = useTranslation('chat');
-
+  const { data: session, status } = useSession({ required: true });
   // STATE ----------------------------------------------
-
+  
   const [apiKey, setApiKey] = useState<string>('');
   const [pluginKeys, setPluginKeys] = useState<PluginKey[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
